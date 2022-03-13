@@ -15,10 +15,10 @@ import java.sql.SQLOutput;
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
-    public DataLoader()
+    public DataLoader(OwnerService ownerService,VetService vetService)
     {
-        ownerService=new OwnerMapService();
-        vetService=new VetMapService();
+        this.ownerService=ownerService;
+        this.vetService=vetService;
     }
     @Override
     public void run(String... args) throws Exception {

@@ -3,9 +3,11 @@ package example.springframework.sfgpetclinic.services.map;
 import example.springframework.sfgpetclinic.model.Owner;
 import example.springframework.sfgpetclinic.services.CrudService;
 import example.springframework.sfgpetclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerMapService extends AbstractMapService<Owner,Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
