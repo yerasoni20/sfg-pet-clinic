@@ -56,6 +56,7 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("Florida");
         owner2.setTelephone("235644667");
 
+        //Owner.builder().address("ASDF").build();
         System.out.println("Loaded Owners");
 
         Speciality radiology=new Speciality();
