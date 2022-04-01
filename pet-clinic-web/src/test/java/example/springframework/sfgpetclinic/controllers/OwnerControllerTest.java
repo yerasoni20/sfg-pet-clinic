@@ -6,6 +6,7 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -68,4 +69,14 @@ class OwnerControllerTest {
                 .andExpect(MockMvcResultMatchers.view().name("notimplemented"));
     }
 
+    @Test
+    void displayOwner() throws Exception {
+        Mockito.when(ownerService.findById(ArgumentMatchers.anyLong())).thenReturn(Owner.builder().id(1l).build());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/owners/123"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("owners/ownerDetails"))
+                .andExpect(MockMvcResultMatchers.model().attribute("owner", Matchers.hasProperty("id", Matchers.is(1l))));
+
+    }
 }
