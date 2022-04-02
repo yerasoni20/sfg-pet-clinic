@@ -2,7 +2,6 @@ package example.springframework.sfgpetclinic.controllers;
 
 import example.springframework.sfgpetclinic.model.Owner;
 import example.springframework.sfgpetclinic.services.OwnerService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
