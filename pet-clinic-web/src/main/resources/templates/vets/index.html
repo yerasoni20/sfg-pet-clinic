@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>List of Vets</title>
 </head>
 <body>
-<!--/*@thymesVar id="vet" type="example.springframework.sfgpetclinic.model.Vet"*/-->
-<h2 th:text="'List of Vets'">List of Vets...</h2>
-<table  class="table table-striped">
-<thead>
-<th>ID</th>
-<th>Firstname</th>
-<th>Lastname</th>
-</thead>
-<tbody>
-<tr th:each="vet:${vets}">
-    <td th:text="${vet.id}">ID</td>
-    <td th:text="${vet.firstname}">Firstname</td>
-    <td th:text="${vet.lastname}">Lastname</td>
-</tr>
-</tbody>
+<!--/*@thymesVar id="vet" type="guru.springframework.sfgpetclinic.model.Vet"*/-->
+<h2>Veterinarians</h2>
+
+<table id="vets" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Specialties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet : ${vets}">
+        <td th:text="${vet.firstname + ' ' + vet.lastname}"></td>
+        <td><span th:each="specialty : ${vet.specialities}"
+                  th:text="${specialty.description + ' '}" /> <span
+                th:if="${vet?.specialities?.size() == 0}">none</span></td>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>
