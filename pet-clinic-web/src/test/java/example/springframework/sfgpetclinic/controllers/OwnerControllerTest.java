@@ -96,6 +96,18 @@ class OwnerControllerTest {
     }
 
     @Test
+    void processFindFormEmptyReturnMany() throws Exception {
+        Mockito.when(ownerService.findAllByLastnameLike(ArgumentMatchers.anyString()))
+                .thenReturn(Arrays.asList(Owner.builder().id(1l).build(),
+                        Owner.builder().id(2l).build()));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/owners")
+                        .param("lastName",""))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("owners/ownersList"))
+                .andExpect(MockMvcResultMatchers.model().attribute("selections", Matchers.hasSize(2)));;
+    }
+    @Test
     void processCreationForm() throws Exception {
         Mockito.when(ownerService.save(ArgumentMatchers.any())).thenReturn(Owner.builder().id(1l).build());
 
