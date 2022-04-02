@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 import javax.persistence.*;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class PetMapServiceTest {
 
     private PetMapService petMapService;
